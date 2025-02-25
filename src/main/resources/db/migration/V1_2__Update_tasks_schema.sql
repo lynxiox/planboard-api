@@ -1,0 +1,3 @@
+ALTER TABLE tasks DROP COLUMN IF EXISTS status;
+
+ALTER TABLE tasks ADD COLUMN is_completed BOOLEAN DEFAULT false;
