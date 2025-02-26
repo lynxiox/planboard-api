@@ -16,12 +16,11 @@ import lombok.Setter;
 public class RequestUpdateTaskDto {
     @Size(min = 3, max = 50, message = "The title size must be from 3 to 50 characters")
     @NotBlank(message = "The title must not be empty")
-
     @Schema(description = "Title of the task", example = "Updated Task Title")
-    String title;
+    private String title;
     @Size(max = 1000, message = "Description size must be up to 1000 characters")
     @Schema(description = "Description of the task", example = "This is an updated description of the task.")
-    String description;
+    private String description;
     @Schema(description = "Completion status of the task", example = "false")
-    Boolean iscompleted;
+    private Boolean iscompleted;
 }

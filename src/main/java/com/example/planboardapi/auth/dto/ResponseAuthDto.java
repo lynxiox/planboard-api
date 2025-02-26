@@ -13,7 +13,7 @@ import lombok.Setter;
 @Schema(description = "Access token response")
 public class ResponseAuthDto {
     @Schema(description = "accessToken", example = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGdtYWlsLmNvbSIsInVzZXJfaWQiOjEsInJvbGUiOiJVU0VSIiwiaWF0I...")
-    String accessToken;
+    private String accessToken;
     @Schema(description = "refreshToken", example = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJleGFtcGxlQGdtYWlsLmNvbSIsInVzZXJfaWQiOjEsInJvbGUiOiJVU0VSIiwiaWF0...")
-    String refreshToken;
+    private String refreshToken;
 }

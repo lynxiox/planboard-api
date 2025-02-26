@@ -32,7 +32,7 @@ public class TaskController implements TaskApi {
 
     @DeleteMapping("/{id}/delete")
     public ResponseEntity<Void> deleteTask(@AuthenticationPrincipal User user,
-                                        @PathVariable Long id) {
+                                           @PathVariable Long id) {
         taskService.deleteTask(user, id);
         return ResponseEntity.noContent().build();
     }

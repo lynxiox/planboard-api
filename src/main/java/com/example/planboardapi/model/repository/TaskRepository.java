@@ -2,8 +2,6 @@ package com.example.planboardapi.model.repository;
 
 import com.example.planboardapi.model.entity.Task;
 import com.example.planboardapi.model.entity.User;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

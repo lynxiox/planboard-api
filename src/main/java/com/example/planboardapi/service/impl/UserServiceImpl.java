@@ -1,6 +1,5 @@
 package com.example.planboardapi.service.impl;
 
-import com.example.planboardapi.exception.custom.UserNotFoundException;
 import com.example.planboardapi.model.mapper.UserMapper;
 import com.example.planboardapi.model.dto.ResponseUserDto;
 import com.example.planboardapi.model.entity.User;

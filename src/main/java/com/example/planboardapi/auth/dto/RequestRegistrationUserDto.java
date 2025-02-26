@@ -18,16 +18,16 @@ public class RequestRegistrationUserDto {
     @Schema(description = "user's name", example = "Ivan")
     @NotNull(message = "User's name must be provided")
     @NotBlank(message = "User's name cannot be blank")
-    String username;
+    private String username;
     @Schema(description = "user's email", example = "example@mail.com")
     @NotNull(message = "Email must be provided")
-    String email;
+    private String email;
     @Schema(description = "user's password", example = "password123")
     @NotNull(message = "Password must be provided")
     @Size(min = 3, max = 20, message = "Password size must be between 3 and 20 characters")
-    String password;
+    private String password;
     @Schema(description = "user's confirm password", example = "password123")
     @NotNull(message = "Password must be provided")
     @Size(min = 3, max = 20, message = "Password size must be between 3 and 20 characters")
-    String confirmPassword;
+    private String confirmPassword;
 }

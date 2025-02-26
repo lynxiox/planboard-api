@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.servers.Server;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,11 +22,14 @@ import java.util.List;
 )
 public class SwaggerConfig {
 
+    @Value("${SERVER_URL}")
+    private String serverUrl;
+
     @Bean
     public OpenAPI api() {
         return new OpenAPI()
                 .servers(
-                        List.of(new Server().url("http://localhost:8080"))
+                        List.of(new Server().url(serverUrl))
                 )
                 .info(
                         new Info().title("PlanBoard API")
