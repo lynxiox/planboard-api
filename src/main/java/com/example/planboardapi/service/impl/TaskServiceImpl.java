@@ -30,11 +30,14 @@ public class TaskServiceImpl implements TaskService {
     @Transactional
     @Override
     public ResponseTaskDto save(User user, RequestCreateTaskDto requestCreateTaskDto) {
-        if (taskRepository.existsByTitleAndUser(requestCreateTaskDto.getTitle(), user)) {
+        String normalizedTitle = normalizeTitle(requestCreateTaskDto.getTitle());
+
+        if (taskRepository.existsByTitleAndUser(normalizedTitle, user)) {
             throw new TaskAlreadyExistsException("Task with this title already exists for this user");
         }
 
         Task task = taskMapper.requestTaskCreateDtoToTask(requestCreateTaskDto);
+        task.setTitle(normalizedTitle);
         task.setUser(user);
         return taskMapper.taskToResponseTaskCreateDto(taskRepository.save(task));
     }
@@ -85,7 +88,7 @@ public class TaskServiceImpl implements TaskService {
 
     private void updateTaskFields(Task task, RequestUpdateTaskDto dto) {
         if (dto.getTitle() != null && !Objects.equals(task.getTitle(), dto.getTitle())) {
-            task.setTitle(dto.getTitle());
+            task.setTitle(normalizeTitle(dto.getTitle()));
         }
         if (dto.getDescription() != null && !Objects.equals(task.getDescription(), dto.getDescription())) {
             task.setDescription(dto.getDescription());
@@ -94,5 +97,9 @@ public class TaskServiceImpl implements TaskService {
             task.setIscompleted(dto.getIscompleted());
             task.setCompletedAt(dto.getIscompleted() ? LocalDateTime.now() : null);
         }
+    }
+
+    private String normalizeTitle(String title) {
+        return title == null ? null : title.trim();
     }
 }

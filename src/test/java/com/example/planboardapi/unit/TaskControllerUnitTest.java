@@ -60,7 +60,7 @@ class TaskControllerUnitTest {
     @Test
     void updateTask_whenValidInput_thenReturnUpdatedTask() {
         RequestUpdateTaskDto requestUpdateTaskDto = new RequestUpdateTaskDto(
-                "Test title 1",
+                "   Test title 1   ",
                 "Test description 1",
                 false);
         ResponseTaskDto responseTaskDto = new ResponseTaskDto(1L,

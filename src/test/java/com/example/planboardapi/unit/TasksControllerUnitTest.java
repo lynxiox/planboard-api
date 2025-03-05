@@ -60,7 +60,7 @@ public class TasksControllerUnitTest {
     @Test
     void createTask_ReturnsTask() {
         User user = new User();
-        RequestCreateTaskDto createTaskDto = new RequestCreateTaskDto("Test title", "Test description");
+        RequestCreateTaskDto createTaskDto = new RequestCreateTaskDto("   Test title  ", "Test description");
 
         when(taskService.save(user, createTaskDto))
                 .thenReturn(new ResponseTaskDto(1L,
@@ -73,7 +73,7 @@ public class TasksControllerUnitTest {
         ResponseEntity<ResponseTaskDto> actualResult = tasksController.createTask(user, createTaskDto);
 
         assertNotNull(actualResult);
-        assertEquals(HttpStatus.OK, actualResult.getStatusCode());
+        assertEquals(HttpStatus.CREATED, actualResult.getStatusCode());
         assertEquals(new ResponseTaskDto(1L,
                         "Test title",
                         "Test description",
